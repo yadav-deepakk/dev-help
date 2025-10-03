@@ -1,0 +1,67 @@
+# mysql, postgresql, mongodb -> adminer
+# redis -> redis insight
+services:
+  mysql:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: tempdb
+      MYSQL_USER: default
+      MYSQL_PASSWORD: userpasswd
+    ports:
+      - 3306:3306 # make sure you don't have another container running on 3306
+    volumes:
+      - ./mysql:/var/lib/mysql
+      
+  postgres:
+    image: postgres
+    restart: always
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    ports:
+      - 5432:5432  # make sure you don't have another container running on 5432
+    environment:
+      - POSTGRES_DB=tempdb
+      - POSTGRES_USER=default
+      - POSTGRES_PASSWORD=defaultpasswd
+
+  mongo:
+    image: mongo
+    restart: always
+    container_name: mongo
+    ports:
+      - 27017:27017 # make sure we don't have another mongo container running on same port
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    volumes:
+      - ./db_data/:/data/db/
+  
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+# redis and redis insight
+  redis:
+    image: redis:latest
+    container_name: redis
+    restart: always
+    ports:
+      - 6379:6379
+    volumes:
+      - redis-volume-data:/data
+
+  redisinsight:
+    image: redislabs/redisinsight:latest
+    container_name: redisinsight
+    ports:
+      - 8001:8001
+    volumes:
+      - redisinsight-data:/db
+
+volumes:
+  redis-volume-data:
+  redisinsight-data:
