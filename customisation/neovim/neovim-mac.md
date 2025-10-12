@@ -1,13 +1,31 @@
 ## Setting up NeoVim on MacOS
-1. install nvim
-2. create file `init.lua` in `~/.config/nvim/`
-3. create keybindings 
-4. add package manager - `lazyvim`
-5. add `gruvbox`, `nvim-tree`, `webdev-icons`, `lualine`
-6. add `treesitter` and `telescope`
-7. add support for `LSPs` using `Mason` 
-
+1. `bob` the neovim management tool - [bob](https://github.com/MordechaiHadad/bob)
+   > set $PATH for bob in `.zshrc` file once installed.
+   > commands for using `bob`
+   ```
+   brew install bob 
+   bob help 
+   bob install stable
+   bob install nightly
+   bob list
+   bob use <nvim-version>
+   ```
+   
+2. `plugins` used for `nvim` editor
+  ```
+  {
+    "catppuccin", 
+    "lazy.nvim",
+    "nvim-tree.lua",
+    "nvim-web-devicons",
+    "nvim-treesitter",
+    "plenary.nvim",
+    "telescope.nvim"
+  }
+  ```
 ---
+
+
 ### 1. Install NeoVim `nvim`
   ```
   brew install neovim
@@ -146,7 +164,6 @@ LSP - Language server protocol is used in IDEs to provide features related to co
 
 ---
 ### Useful links 
-- [Youtube Playlist](https://www.youtube.com/watch?v=J9yqSdvAKXY&list=PLsz00TDipIffxsNXSkskknolKShdbcALR&index=1)
 - [Awsome NeoVim](https://github.com/rockerBOO/awesome-neovim)
 - [gruvbox](https://github.com/morhetz/gruvbox)
 - [lualine](https://github.com/nvim-lualine/lualine.nvim)
