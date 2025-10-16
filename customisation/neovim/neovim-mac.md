@@ -10,13 +10,17 @@
    bob list
    bob use <nvim-version>
    ```
+
+2. package manager used in `neovim`
+   ```
+   lazyVim
+   ```
    
-2. `plugins` used for `nvim` editor
+4. `plugins` used for `nvim` editor
   ```
   {
-    "catppuccin", 
     "lazy.nvim",
-    "nvim-tree.lua",
+    "vague", 
     "nvim-web-devicons",
     "nvim-treesitter",
     "plenary.nvim",
